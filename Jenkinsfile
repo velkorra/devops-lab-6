@@ -21,6 +21,19 @@ pipeline {
     }
 
     stages {
+        stage('Setup Tools') {
+            steps {
+                sh '''#!/bin/bash
+                    set -e
+                    if ! command -v kubectl &> /dev/null; then
+                        echo "=> Устанавливаем kubectl..."
+                        curl -sLO "https://dl.k8s.io/release/v1.29.2/bin/linux/amd64/kubectl"
+                        chmod +x kubectl
+                        mv kubectl /shared-tools/kubectl
+                    fi
+                '''
+            }
+        }
         stage('Init & Get Current State') {
             steps {
                 script {
