@@ -7,7 +7,7 @@ pipeline {
     environment {
         VAULT_URL = 'http://vault:8200'
         DOCKER_HOST = 'tcp://docker-dind:2376'
-        REGISTRY_URL = 'registry.cicd-task.svc.cluster.local:443'
+        REGISTRY_URL = 'registry:443'
         DOCKER_BUILDKIT = '1'
         
         APP_NAME = "work-app"
