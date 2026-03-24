@@ -17,7 +17,7 @@ spec:
       - name: registry-auth
       containers:
       - name: work-app
-        image: registry.cicd-task.svc.cluster.local:443/work-app:__IMAGE_TAG__
+        image: registry:443/work-app:__IMAGE_TAG__
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
