@@ -113,7 +113,7 @@ pipeline {
                     sh "sed -i 's|__IMAGE_TAG__|${NEW_TAG}|g' k8s/app.yaml"
                     
                     echo "=> Применяем конфигурацию в кластер..."
-                    sh "kubectl apply -f k8s/ -n ${NAMESPACE}"
+                    sh "kubectl apply -f k8s/app.yaml -f k8s/ingress.yaml -f k8s/hpa.yaml -n ${NAMESPACE}"
                     
                     echo "=> ЖДЕМ завершения rollout'а (без этого тесты пойдут в старые поды)..."
                     sh "kubectl rollout status deployment/${APP_NAME} -n ${NAMESPACE} --timeout=180s"
