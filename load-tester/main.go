@@ -76,7 +76,7 @@ func main() {
 		successOnly bool // новый флаг
 	)
 	detailed = true
-	flag.StringVar(&url, "url", "https://app-lab3.hakurei.dev/work", "URL для тестирования")
+	flag.StringVar(&url, "url", "https://app-lab6.hakurei.dev/work", "URL для тестирования")
 	flag.IntVar(&targetRPS, "rps", 480, "Целевое количество запросов в секунду")
 	flag.DurationVar(&duration, "duration", 500*time.Second, "Длительность теста")
 	flag.DurationVar(&interval, "interval", 1*time.Second, "Интервал детальной статистики")

@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: work-app-ingress
-  namespace: lab3
+  namespace: lab6
 spec:
   ingressClassName: traefik
   rules:
-  - host: app.local
+  - host: app-lab6.local
     http:
       paths:
       - path: /
