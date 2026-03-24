@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version '3.32.0.CR1'
+    id 'com.diffplug.spotless' version "8.2.1"
+}
+
+group = 'org.example'
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus:quarkus-bom:3.32.0.CR1")
+    implementation 'io.quarkus:quarkus-rest'
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-smallrye-openapi'
+    implementation 'io.quarkus:quarkus-micrometer-registry-prometheus'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+tasks.withType(Test).configureEach {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+    useJUnitPlatform()
+}
+
+spotless {
+    java {
+        // use the default import order
+        importOrder()
+        // use the Google Java Format
+        googleJavaFormat()
+        // by default, Spotless will format all files ending in .java
+        // within your project, and not just the ones in src/main/java
+        target '**/*.java'
+    }
+}
+

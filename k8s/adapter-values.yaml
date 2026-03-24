@@ -1,0 +1,11 @@
+rules:
+  custom:
+    - seriesQuery: 'work_active_requests'
+      resources:
+        overrides:
+          namespace: {resource: "namespace"}
+          pod: {resource: "pod"}
+      name:
+        matches: "work_active_requests"
+        as: "work_active_requests_hpa"
+      metricsQuery: 'sum(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>)'

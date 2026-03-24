@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: work-app-sm
+  namespace: monitoring  
+  labels:
+    release: monitoring 
+spec:
+  namespaceSelector:
+    matchNames:
+      - lab3            
+  selector:
+    matchLabels:
+      app: work-app
+  endpoints:
+  - port: http
+    path: /q/metrics
+    interval: 1s

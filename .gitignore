@@ -1,0 +1,49 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+docker-compose.yml
+# Quarkus
+target/
+.quarkus/
+
+# Go
+load-tester/*.exe
+load-tester/*.exe~
+load-tester/*.dll
+load-tester/*.so
+load-tester/*.dylib
+load-tester/load-tester
+load-tester/load_test_report_*.txt
+
+# Test output
+*.log
+*.tmp
+
+# OS
+Thumbs.db

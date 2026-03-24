@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: work-app
+  namespace: lab3
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: work-app
+  template:
+    metadata:
+      labels:
+        app: work-app
+    spec:
+      containers:
+      - name: work-app
+        image: lab3/quarkus-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: APP_API_LIMIT
+          value: "480" 
+        - name: APP_API_TIMEOUT
+          value: "3500" 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: work-app
+  namespace: lab3
+  labels:
+    app: work-app
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  selector:
+    app: work-app
+  type: ClusterIP
